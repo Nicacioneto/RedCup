@@ -11,10 +11,8 @@ android {
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
     buildTypes {
-        debug {
-          testCoverageEnabled true
-        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
@@ -22,6 +20,10 @@ android {
     }
     lintOptions {
         abortOnError false
+    }
+    productFlavors {
+      free {}
+      paid {}
     }
 }
 
@@ -39,6 +41,10 @@ dependencies {
     compile 'com.google.firebase:firebase-messaging:10.0.1'
     testCompile 'junit:junit:4.12'
     compile project(':jsoup-1.10.2')
+    classpath 'com.dicedmelon.gradle:jacoco-android:0.1.1'
+
 }
 
 apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.android.application'
+apply plugin: 'jacoco-android'
